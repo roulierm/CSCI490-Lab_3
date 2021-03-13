@@ -2,12 +2,13 @@ package com.example.listviewdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//import android.content.Intent;
+
 import android.os.Bundle;
-//import android.widget.Adapter;
-//import android.widget.AdapterView;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
@@ -22,6 +23,21 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.class_schedule);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "Short Click", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "Long Click", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
 
 
     }
